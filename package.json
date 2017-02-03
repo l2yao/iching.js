@@ -1,0 +1,25 @@
+{
+  "name": "iching",
+  "version": "1.0.0",
+  "description": "iching javascript lib",
+  "main": "iching.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/l2yao/iching.js.git"
+  },
+  "keywords": [
+    "iching"
+  ],
+  "author": "Long Yao <yl1984108@gmail.com> (http://l2yao.github.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/l2yao/iching.js/issues"
+  },
+  "homepage": "https://github.com/l2yao/iching.js#readme",
+  "devDependencies": {
+    "d3": "^4.5.0"
+  }
+}
