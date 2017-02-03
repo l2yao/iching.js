@@ -107,6 +107,12 @@ var bagong = [{'gong': [
                            {'gua':'䷄', 'name':'水天需'},
                            {'gua':'䷇', 'name':'水地比'}]}];
 module.exports = {
+    getTrigrams : function() {
+      return Trigram;
+    },
+    getHexagrams : function() {
+      return Hexagram;
+    },
     getGongIndex : function(hexagram) {
         for(var i=0;i<this.bagong_bagua.length; i++) {
             var gong = this.bagong_bagua[i].gua;
