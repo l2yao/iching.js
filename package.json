@@ -1,6 +1,6 @@
 {
   "name": "iching.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "iching javascript lib",
   "main": "iching.js",
   "scripts": {
@@ -18,11 +18,5 @@
   "bugs": {
     "url": "https://github.com/l2yao/iching.js/issues"
   },
-  "homepage": "https://github.com/l2yao/iching.js#readme",
-  "devDependencies": {
-    "d3": "^4.5.0"
-  },
-  "dependencies": {
-    "d3": "^4.5.0"
-  }
+  "homepage": "https://github.com/l2yao/iching.js#readme"
 }

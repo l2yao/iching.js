@@ -1,4 +1,3 @@
-var d3 = require('d3');
 var Trigram = ['☰','☳','☵','☶','☷','☴','☲','☱'];
 var Trigram_name = ['乾','震','坎','艮','坤','巽','離','兌'];
 var Trigram_symbol = ['天','雷','水','山','地','风','火','泽'];
@@ -264,16 +263,10 @@ module.exports = {
             break;
         }
     },
-    drawTrigram : function(div, trigram) {
-        var svgContainer = d3.select(div).append("svg")
-                                 .attr("width", 300)
-                                 .attr("height", 210);
+    drawTrigram : function(svgContainer, trigram) {
         this.drawBagua(svgContainer, trigram, 50, 50, 50, 200, 30);
     },
-    drawHexagram: function(div, hexagram, ri_tiangan) {
-        var svgContainer = d3.select(div).append("svg")
-                                 .attr("width", 400)
-                                 .attr("height", 420);
+    drawHexagram: function(svgContainer, hexagram, ri_tiangan) {
         var hexagram_index = this.Hexagram.indexOf(hexagram);
         var lower_index = Math.floor(hexagram_index / 8);
         var upper_index = hexagram_index % 8;
@@ -285,11 +278,7 @@ module.exports = {
         this.drawLiuQin(svgContainer, hexagram, 60, 65, 50);
         this.drawLiuShou(svgContainer, ri_tiangan, 20, 65, 50);
     },
-    drawTrigrams : function(div, upper_trigram, lower_trigram, ri_tiangan) {
-        d3.select("svg").remove();
-        var svgContainer = d3.select(div).append("svg")
-                                 .attr("width", 400)
-                                 .attr("height", 420);
+    drawTrigrams : function(svgContainer, upper_trigram, lower_trigram, ri_tiangan) {
         this.drawBagua(svgContainer, upper_trigram, 150, 50, 50, 200, 30);
         this.drawNaJia(svgContainer, upper_trigram, 'upper', 100, 65, 50);
         this.drawBagua(svgContainer, lower_trigram, 150, 200, 50, 200, 30);
