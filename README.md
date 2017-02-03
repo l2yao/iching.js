@@ -1,2 +1,5 @@
 # iching.js
-javascript lib for iching logic
+Javascript lib for iching logic
+
+## install lib with node.js
+`npm install iching.js`
