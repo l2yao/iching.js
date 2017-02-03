@@ -114,26 +114,26 @@ module.exports = {
       return Hexagram;
     },
     getGongIndex : function(hexagram) {
-        for(var i=0;i<this.bagong_bagua.length; i++) {
-            var gong = this.bagong_bagua[i].gua;
+        for(var i=0;i<bagong_bagua.length; i++) {
+            var gong = bagong_bagua[i].gua;
             var gong_index = gong.indexOf(hexagram);
             if(gong_index != -1)    return gong_index;
         }
         return -1;
     },
     getGongName : function(hexagram) {
-        for(var i=0;i<this.bagong_bagua.length; i++) {
-            var gong = this.bagong_bagua[i].gua;
+        for(var i=0;i<bagong_bagua.length; i++) {
+            var gong = bagong_bagua[i].gua;
             var gong_index = gong.indexOf(hexagram);
             if(gong_index != -1){
-                return this.Hexagram_name[this.Hexagram.indexOf(gong[0])];
+                return Hexagram_name[Hexagram.indexOf(gong[0])];
             }
         }
     },
     trigram2hexagram : function(upper_trigram, lower_trigram) {
-        var upper_index = this.Trigram.indexOf(upper_trigram);
-        var lower_index = this.Trigram.indexOf(lower_trigram);
-        return this.Hexagram[lower_index * 8 + upper_index];
+        var upper_index = Trigram.indexOf(upper_trigram);
+        var lower_index = Trigram.indexOf(lower_trigram);
+        return Hexagram[lower_index * 8 + upper_index];
     },
     yinyang2trigram: function(first_yao, second_yao, third_yao) {
         if(first_yao === 'yang' && second_yao === 'yang' && third_yao === 'yang'){
@@ -179,12 +179,12 @@ module.exports = {
         }
     },
     getLiuqin : function(dizhi, hexagram) {
-        var dizhi_index = this.dizhi.indexOf(dizhi);
-        var dizhi_wuxing = this.dizhi_wuxing[dizhi_index];
-        var gongName = this.getGongName(hexagram);
-        var hexagram_wuxing = this.Trigram_wuxing[this.Trigram_name.indexOf(gongName)];
-        var dizhi_wuxing_index = this.wuxing.indexOf(dizhi_wuxing);
-        var hexagram_wuxing_index = this.wuxing.indexOf(hexagram_wuxing);
+        var dizhi_index = dizhi.indexOf(dizhi);
+        var dizhi_wuxing = dizhi_wuxing[dizhi_index];
+        var gongName = getGongName(hexagram);
+        var hexagram_wuxing = Trigram_wuxing[Trigram_name.indexOf(gongName)];
+        var dizhi_wuxing_index = wuxing.indexOf(dizhi_wuxing);
+        var hexagram_wuxing_index = wuxing.indexOf(hexagram_wuxing);
         switch(dizhi_wuxing_index - hexagram_wuxing_index){
         case 0:
             return '兄弟';
@@ -228,74 +228,74 @@ module.exports = {
     drawBagua : function(svgContainer, trigram, x, y, interval, width, height) {
         switch(trigram){
         case '☰':
-            this.drawYangYao(svgContainer, x, y, width, height);
-            this.drawYangYao(svgContainer, x, y+interval, width, height);
-            this.drawYangYao(svgContainer, x, y+interval*2, width, height);
+            drawYangYao(svgContainer, x, y, width, height);
+            drawYangYao(svgContainer, x, y+interval, width, height);
+            drawYangYao(svgContainer, x, y+interval*2, width, height);
             break;
         case '☱':
-            this.drawYinYao(svgContainer, x, y, width, height);
-            this.drawYangYao(svgContainer, x, y+interval, width, height);
-            this.drawYangYao(svgContainer, x, y+interval*2, width, height);
+            drawYinYao(svgContainer, x, y, width, height);
+            drawYangYao(svgContainer, x, y+interval, width, height);
+            drawYangYao(svgContainer, x, y+interval*2, width, height);
             break;
         case '☲':
-            this.drawYangYao(svgContainer, x, y, width, height);
-            this.drawYinYao(svgContainer, x, y+interval, width, height);
-            this.drawYangYao(svgContainer, x, y+interval*2, width, height);
+            drawYangYao(svgContainer, x, y, width, height);
+            drawYinYao(svgContainer, x, y+interval, width, height);
+            drawYangYao(svgContainer, x, y+interval*2, width, height);
             break;
         case '☳':
-            this.drawYinYao(svgContainer, x, y, width, height);
-            this.drawYinYao(svgContainer, x, y+interval, width, height);
-            this.drawYangYao(svgContainer, x, y+interval*2, width, height);
+            drawYinYao(svgContainer, x, y, width, height);
+            drawYinYao(svgContainer, x, y+interval, width, height);
+            drawYangYao(svgContainer, x, y+interval*2, width, height);
             break;
         case '☴':
-            this.drawYangYao(svgContainer, x, y, width, height);
-            this.drawYangYao(svgContainer, x, y+interval, width, height);
-            this.drawYinYao(svgContainer, x, y+interval*2, width, height);
+            drawYangYao(svgContainer, x, y, width, height);
+            drawYangYao(svgContainer, x, y+interval, width, height);
+            drawYinYao(svgContainer, x, y+interval*2, width, height);
             break;
         case '☵':
-            this.drawYinYao(svgContainer, x, y, width, height);
-            this.drawYangYao(svgContainer, x, y+interval, width, height);
-            this.drawYinYao(svgContainer, x, y+interval*2, width, height);
+            drawYinYao(svgContainer, x, y, width, height);
+            drawYangYao(svgContainer, x, y+interval, width, height);
+            drawYinYao(svgContainer, x, y+interval*2, width, height);
             break;
         case '☶':
-            this.drawYangYao(svgContainer, x, y, width, height);
-            this.drawYinYao(svgContainer, x, y+interval, width, height);
-            this.drawYinYao(svgContainer, x, y+interval*2, width, height);
+            drawYangYao(svgContainer, x, y, width, height);
+            drawYinYao(svgContainer, x, y+interval, width, height);
+            drawYinYao(svgContainer, x, y+interval*2, width, height);
             break;
         case '☷':
-            this.drawYinYao(svgContainer, x, y, width, height);
-            this.drawYinYao(svgContainer, x, y+interval, width, height);
-            this.drawYinYao(svgContainer, x, y+interval*2, width, height);
+            drawYinYao(svgContainer, x, y, width, height);
+            drawYinYao(svgContainer, x, y+interval, width, height);
+            drawYinYao(svgContainer, x, y+interval*2, width, height);
             break;
         }
     },
     drawTrigram : function(svgContainer, trigram) {
-        this.drawBagua(svgContainer, trigram, 50, 50, 50, 200, 30);
+        drawBagua(svgContainer, trigram, 50, 50, 50, 200, 30);
     },
     drawHexagram: function(svgContainer, hexagram, ri_tiangan) {
-        var hexagram_index = this.Hexagram.indexOf(hexagram);
+        var hexagram_index = Hexagram.indexOf(hexagram);
         var lower_index = Math.floor(hexagram_index / 8);
         var upper_index = hexagram_index % 8;
-        this.drawBagua(svgContainer, this.Trigram[upper_index], 150, 50, 50, 200, 30);
-        this.drawNaJia(svgContainer, this.Trigram[upper_index], 'upper', 100, 65, 50);
-        this.drawBagua(svgContainer, this.Trigram[lower_index], 150, 200, 50, 200, 30);
-        this.drawNaJia(svgContainer, this.Trigram[lower_index], 'lower', 100, 215, 50);
-        this.drawShiYing(svgContainer, hexagram, 375, 65, 50);
-        this.drawLiuQin(svgContainer, hexagram, 60, 65, 50);
-        this.drawLiuShou(svgContainer, ri_tiangan, 20, 65, 50);
+        drawBagua(svgContainer, Trigram[upper_index], 150, 50, 50, 200, 30);
+        drawNaJia(svgContainer, Trigram[upper_index], 'upper', 100, 65, 50);
+        drawBagua(svgContainer, Trigram[lower_index], 150, 200, 50, 200, 30);
+        drawNaJia(svgContainer, Trigram[lower_index], 'lower', 100, 215, 50);
+        drawShiYing(svgContainer, hexagram, 375, 65, 50);
+        drawLiuQin(svgContainer, hexagram, 60, 65, 50);
+        drawLiuShou(svgContainer, ri_tiangan, 20, 65, 50);
     },
     drawTrigrams : function(svgContainer, upper_trigram, lower_trigram, ri_tiangan) {
-        this.drawBagua(svgContainer, upper_trigram, 150, 50, 50, 200, 30);
-        this.drawNaJia(svgContainer, upper_trigram, 'upper', 100, 65, 50);
-        this.drawBagua(svgContainer, lower_trigram, 150, 200, 50, 200, 30);
-        this.drawNaJia(svgContainer, lower_trigram, 'lower', 100, 215, 50);
-        var hexagram = this.trigram2hexagram(upper_trigram, lower_trigram);
-        this.drawShiYing(svgContainer, hexagram, 375, 65, 50);
-        this.drawLiuQin(svgContainer, hexagram, 60, 65, 50);
-        this.drawLiuShou(svgContainer, ri_tiangan, 20, 65, 50);
+        drawBagua(svgContainer, upper_trigram, 150, 50, 50, 200, 30);
+        drawNaJia(svgContainer, upper_trigram, 'upper', 100, 65, 50);
+        drawBagua(svgContainer, lower_trigram, 150, 200, 50, 200, 30);
+        drawNaJia(svgContainer, lower_trigram, 'lower', 100, 215, 50);
+        var hexagram = trigram2hexagram(upper_trigram, lower_trigram);
+        drawShiYing(svgContainer, hexagram, 375, 65, 50);
+        drawLiuQin(svgContainer, hexagram, 60, 65, 50);
+        drawLiuShou(svgContainer, ri_tiangan, 20, 65, 50);
     },
     drawShiYing : function(svgContainer, hexagram, x, y, interval) {
-        var gong_index = this.getGongIndex(hexagram);
+        var gong_index = getGongIndex(hexagram);
         var shi = -1;
         var ying = -1;
         switch(gong_index){
@@ -410,26 +410,26 @@ module.exports = {
         return najia;
     },
     drawNaJia : function(svgContainer, trigram, gua_pos, x, y, interval) {
-        var najia = this.getNaJia(trigram, gua_pos);
+        var najia = getNaJia(trigram, gua_pos);
         for(var i =0 ; i <najia.length; i++){
-            var dizhi_index = this.dizhi.indexOf(najia[i]);
+            var dizhi_index = dizhi.indexOf(najia[i]);
             var text = svgContainer.append('text')
-                        .text(najia[i]+ this.dizhi_wuxing[dizhi_index])
+                        .text(najia[i]+ dizhi_wuxing[dizhi_index])
                         .attr('x', x)
                         .attr('y', y + i * interval)
                         .attr('font-size', 16);
         }
     },
     drawLiuQin : function(svgContainer, hexagram, x, y, interval) {
-        var hexagram_index = this.Hexagram.indexOf(hexagram);
-        var upper_trigram = this.Trigram[hexagram_index % 8];
-        var lower_trigram = this.Trigram[Math.floor(hexagram_index / 8)];
-        var upper_gua = this.getNaJia(upper_trigram, 'upper');
-        var lower_gua = this.getNaJia(lower_trigram, 'lower');
+        var hexagram_index = Hexagram.indexOf(hexagram);
+        var upper_trigram = Trigram[hexagram_index % 8];
+        var lower_trigram = Trigram[Math.floor(hexagram_index / 8)];
+        var upper_gua = getNaJia(upper_trigram, 'upper');
+        var lower_gua = getNaJia(lower_trigram, 'lower');
         var gua = upper_gua.concat(lower_gua);
         
         for( var i=0;i<gua.length; i++) {
-            var liuqin = this.getLiuqin(gua[i], hexagram);
+            var liuqin = getLiuqin(gua[i], hexagram);
             var text = svgContainer.append('text')
                         .text(liuqin)
                         .attr('x', x)
@@ -438,7 +438,7 @@ module.exports = {
         }
     },
     drawLiuShou : function(svgContainer, tiangan, x, y, interval) {
-        var tiangan_index = this.tiangan.indexOf(tiangan);
+        var tiangan_index = tiangan.indexOf(tiangan);
         var offset = 0;
         if(tiangan_index ===0 || tiangan_index ===1){
             offset =0;
@@ -454,12 +454,12 @@ module.exports = {
             offset =5;
         }
         
-        for( var i=0; i<this.liushou.length; i++) {
+        for( var i=0; i<liushou.length; i++) {
             var pos = (i + offset) % 6;
             var text = svgContainer.append('text')
-                        .text(this.liushou[pos])
+                        .text(liushou[pos])
                         .attr('x', x)
-                        .attr('y', y + (this.liushou.length -1 - i) *interval)
+                        .attr('y', y + (liushou.length -1 - i) *interval)
                         .attr('font-size', 16);
         }
     }
