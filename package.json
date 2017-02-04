@@ -1,6 +1,6 @@
 {
   "name": "iching.js",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "iching javascript lib",
   "main": "iching.js",
   "scripts": {

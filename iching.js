@@ -1,7 +1,7 @@
-var Trigram = ['☰','☳','☵','☶','☷','☴','☲','☱'];
-var Trigram_name = ['乾','震','坎','艮','坤','巽','離','兌'];
-var Trigram_symbol = ['天','雷','水','山','地','风','火','泽'];
-var Trigram_wuxing = ['金','木','水','土','土','木','火','金'];
+var trigram = ['☰','☳','☵','☶','☷','☴','☲','☱'];
+var trigram_name = ['乾','震','坎','艮','坤','巽','離','兌'];
+var trigram_symbol = ['天','雷','水','山','地','风','火','泽'];
+var trigram_wuxing = ['金','木','水','土','土','木','火','金'];
 var xiantian_bagua = ['☰','☱','☲','☳','☴','☵','☶','☷'];
 var houtian_bagua = ['☵','☷','☳','☴','☰','☱','☶','☲'];
 var tiangan = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
@@ -10,7 +10,7 @@ var dizhi = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','
 var dizhi_wuxing = ['水','土','木','木','土','火','火','土','金','金','土','水'];
 var wuxing = ['土','金','水','木','火'];
 var liushou = ['青龍','朱雀','勾陳','騰蛇','白虎','玄武'];
-var Hexagram = ['䷀','䷡','䷄','䷙','䷊','䷈','䷍','䷪',
+var hexagram = ['䷀','䷡','䷄','䷙','䷊','䷈','䷍','䷪',
                 '䷘','䷲','䷂','䷚','䷗','䷩','䷔','䷐',
                 '䷅','䷧','䷜','䷃','䷆','䷺','䷿','䷮',
                 '䷠','䷽','䷦','䷳','䷎','䷴','䷷','䷞',
@@ -18,7 +18,7 @@ var Hexagram = ['䷀','䷡','䷄','䷙','䷊','䷈','䷍','䷪',
                 '䷫','䷟','䷯','䷑','䷭','䷸','䷱','䷛',
                 '䷌','䷶','䷾','䷕','䷣','䷤','䷝','䷰',
                 '䷉','䷵','䷻','䷨','䷒','䷼','䷥','䷹'];
-var Hexagram_name = ['乾','大壯','需','大畜','泰','小畜','大有','夬',
+var hexagram_name = ['乾','大壯','需','大畜','泰','小畜','大有','夬',
                 '無妄','震','屯','頤','復','益','噬嗑','隨',
                 '訟','解','坎','蒙','師','渙','未濟','困',
                 '遯','小過','蹇','艮','謙','漸','旅','咸',
@@ -108,10 +108,18 @@ var bagong = [{'gong': [
                            {'gua':'䷇', 'name':'水地比'}]}];
 module.exports = {
     getTrigrams : function() {
-      return Trigram;
+      return trigram;
     },
     getHexagrams : function() {
-      return Hexagram;
+      return hexagram;
+    },
+    getHexagramName: function(hexagram) {
+      var index = hexagram.indexOf(hexagram);
+      if(index == -1) {
+        return null;
+      } else {
+        return hexagram_name[index];
+      }
     },
     getGongIndex : function(hexagram) {
         for(var i=0;i<bagong_bagua.length; i++) {
@@ -126,14 +134,14 @@ module.exports = {
             var gong = bagong_bagua[i].gua;
             var gong_index = gong.indexOf(hexagram);
             if(gong_index != -1){
-                return Hexagram_name[Hexagram.indexOf(gong[0])];
+                return hexagram_name[hexagram.indexOf(gong[0])];
             }
         }
     },
     trigram2hexagram : function(upper_trigram, lower_trigram) {
-        var upper_index = Trigram.indexOf(upper_trigram);
-        var lower_index = Trigram.indexOf(lower_trigram);
-        return Hexagram[lower_index * 8 + upper_index];
+        var upper_index = trigram.indexOf(upper_trigram);
+        var lower_index = trigram.indexOf(lower_trigram);
+        return hexagram[lower_index * 8 + upper_index];
     },
     yinyang2trigram: function(first_yao, second_yao, third_yao) {
         if(first_yao === 'yang' && second_yao === 'yang' && third_yao === 'yang'){
@@ -182,7 +190,7 @@ module.exports = {
         var dizhi_index = dizhi.indexOf(dizhi);
         var dizhi_wuxing = dizhi_wuxing[dizhi_index];
         var gongName = getGongName(hexagram);
-        var hexagram_wuxing = Trigram_wuxing[Trigram_name.indexOf(gongName)];
+        var hexagram_wuxing = trigram_wuxing[trigram_name.indexOf(gongName)];
         var dizhi_wuxing_index = wuxing.indexOf(dizhi_wuxing);
         var hexagram_wuxing_index = wuxing.indexOf(hexagram_wuxing);
         switch(dizhi_wuxing_index - hexagram_wuxing_index){
@@ -273,13 +281,13 @@ module.exports = {
         drawBagua(svgContainer, trigram, 50, 50, 50, 200, 30);
     },
     drawHexagram: function(svgContainer, hexagram, ri_tiangan) {
-        var hexagram_index = Hexagram.indexOf(hexagram);
+        var hexagram_index = .indexOf(hexagram);
         var lower_index = Math.floor(hexagram_index / 8);
         var upper_index = hexagram_index % 8;
-        drawBagua(svgContainer, Trigram[upper_index], 150, 50, 50, 200, 30);
-        drawNaJia(svgContainer, Trigram[upper_index], 'upper', 100, 65, 50);
-        drawBagua(svgContainer, Trigram[lower_index], 150, 200, 50, 200, 30);
-        drawNaJia(svgContainer, Trigram[lower_index], 'lower', 100, 215, 50);
+        drawBagua(svgContainer, trigram[upper_index], 150, 50, 50, 200, 30);
+        drawNaJia(svgContainer, trigram[upper_index], 'upper', 100, 65, 50);
+        drawBagua(svgContainer, trigram[lower_index], 150, 200, 50, 200, 30);
+        drawNaJia(svgContainer, trigram[lower_index], 'lower', 100, 215, 50);
         drawShiYing(svgContainer, hexagram, 375, 65, 50);
         drawLiuQin(svgContainer, hexagram, 60, 65, 50);
         drawLiuShou(svgContainer, ri_tiangan, 20, 65, 50);
@@ -421,9 +429,9 @@ module.exports = {
         }
     },
     drawLiuQin : function(svgContainer, hexagram, x, y, interval) {
-        var hexagram_index = Hexagram.indexOf(hexagram);
-        var upper_trigram = Trigram[hexagram_index % 8];
-        var lower_trigram = Trigram[Math.floor(hexagram_index / 8)];
+        var hexagram_index = .indexOf(hexagram);
+        var upper_trigram = trigram[hexagram_index % 8];
+        var lower_trigram = trigram[Math.floor(hexagram_index / 8)];
         var upper_gua = getNaJia(upper_trigram, 'upper');
         var lower_gua = getNaJia(lower_trigram, 'lower');
         var gua = upper_gua.concat(lower_gua);
