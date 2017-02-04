@@ -429,7 +429,7 @@ module.exports = {
         }
     },
     drawLiuQin : function(svgContainer, hexagram, x, y, interval) {
-        var hexagram_index = .indexOf(hexagram);
+        var hexagram_index = hexagrams.indexOf(hexagram);
         var upper_trigram = trigram[hexagram_index % 8];
         var lower_trigram = trigram[Math.floor(hexagram_index / 8)];
         var upper_gua = getNaJia(upper_trigram, 'upper');
