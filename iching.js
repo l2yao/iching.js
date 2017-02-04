@@ -141,7 +141,7 @@ module.exports = {
     trigram2hexagram : function(upper_trigram, lower_trigram) {
         var upper_index = trigram.indexOf(upper_trigram);
         var lower_index = trigram.indexOf(lower_trigram);
-        return hexagram[lower_index * 8 + upper_index];
+        return hexagrams[lower_index * 8 + upper_index];
     },
     yinyang2trigram: function(first_yao, second_yao, third_yao) {
         if(first_yao === 'yang' && second_yao === 'yang' && third_yao === 'yang'){
