@@ -138,6 +138,12 @@ module.exports = {
             }
         }
     },
+    getXianTianBaGua : function(number) {
+      return xiantian_bagua[number % 8];
+    },
+    getHouTianBaGua : function(number) {
+      return houtian_bagua[number % 8];
+    },
     trigram2hexagram : function(upper_trigram, lower_trigram) {
         var upper_index = trigram.indexOf(upper_trigram);
         var lower_index = trigram.indexOf(lower_trigram);
