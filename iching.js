@@ -4,9 +4,9 @@ var trigram_symbol = ['天','雷','水','山','地','风','火','泽'];
 var trigram_wuxing = ['金','木','水','土','土','木','火','金'];
 var xiantian_bagua = ['☰','☱','☲','☳','☴','☵','☶','☷'];
 var houtian_bagua = ['☵','☷','☳','☴','☰','☱','☶','☲'];
-var tiangan = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+var tiangan_table = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
 var tiangan_wuxing = ['木','木','火','火','土','土','金','金','水','水'];
-var dizhi = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+var dizhi_table = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
 var dizhi_wuxing = ['水','土','木','木','土','火','火','土','金','金','土','水'];
 var wuxing = ['土','金','水','木','火'];
 var liushou = ['青龍','朱雀','勾陳','騰蛇','白虎','玄武'];
@@ -193,7 +193,7 @@ module.exports = {
         }
     },
     getLiuqin : function(dizhi, hexagram) {
-        var dizhi_index = dizhi.indexOf(dizhi);
+        var dizhi_index = dizhi_table.indexOf(dizhi);
         var dizhi_wuxing = dizhi_wuxing[dizhi_index];
         var gongName = module.exports.getGongName(hexagram);
         var hexagram_wuxing = trigram_wuxing[trigram_name.indexOf(gongName)];
@@ -426,7 +426,7 @@ module.exports = {
     drawNaJia : function(svgContainer, trigram, gua_pos, x, y, interval) {
         var najia = module.exports.getNaJia(trigram, gua_pos);
         for(var i =0 ; i <najia.length; i++){
-            var dizhi_index = dizhi.indexOf(najia[i]);
+            var dizhi_index = dizhi_table.indexOf(najia[i]);
             var text = svgContainer.append('text')
                         .text(najia[i]+ dizhi_wuxing[dizhi_index])
                         .attr('x', x)
@@ -452,7 +452,7 @@ module.exports = {
         }
     },
     drawLiuShou : function(svgContainer, tiangan, x, y, interval) {
-        var tiangan_index = tiangan.indexOf(tiangan);
+        var tiangan_index = tiangan_table.indexOf(tiangan);
         var offset = 0;
         if(tiangan_index ===0 || tiangan_index ===1){
             offset =0;
