@@ -144,6 +144,22 @@ module.exports = {
     getHouTianBaGua : function(number) {
       return houtian_bagua[number % 8];
     },
+    getWuXing : function(gua) {
+      if (trigram.indexOf(gua) != -1) {
+        var index = trigram.indexOf(gua);
+        return trigram_wuxing[index];
+      } else if(trigram_name.indexOf(gua) != -1) {
+        var index = trigram_name.indexOf(gua);
+        return trigram_wuxing[index];
+      } else if(tiangan_table.indexOf(gua) != -1) {
+        var index = tiangan_table.indexOf(gua);
+        return tiangan_wuxing[index];
+      } else if(dizhi_table.indexOf(gua) != -1) {
+        var index = dizhi_table.indexOf(gua);
+        return dizhi_wuxing[index];
+      }
+      return null;
+    },
     trigram2hexagram : function(upper_trigram, lower_trigram) {
         var upper_index = trigram.indexOf(upper_trigram);
         var lower_index = trigram.indexOf(lower_trigram);
@@ -193,10 +209,9 @@ module.exports = {
         }
     },
     getLiuqin : function(dizhi, hexagram) {
-        var dizhi_index = dizhi_table.indexOf(dizhi);
-        var dizhi_wuxing = dizhi_wuxing[dizhi_index];
+        var dizhi_wuxing = module.exports.getWuXing(dizhi);
         var gongName = module.exports.getGongName(hexagram);
-        var hexagram_wuxing = trigram_wuxing[trigram_name.indexOf(gongName)];
+        var hexagram_wuxing = module.exports.getWuXing(gongName);
         var dizhi_wuxing_index = wuxing.indexOf(dizhi_wuxing);
         var hexagram_wuxing_index = wuxing.indexOf(hexagram_wuxing);
         switch(dizhi_wuxing_index - hexagram_wuxing_index){
@@ -426,9 +441,8 @@ module.exports = {
     drawNaJia : function(svgContainer, trigram, gua_pos, x, y, interval) {
         var najia = module.exports.getNaJia(trigram, gua_pos);
         for(var i =0 ; i <najia.length; i++){
-            var dizhi_index = dizhi_table.indexOf(najia[i]);
             var text = svgContainer.append('text')
-                        .text(najia[i]+ dizhi_wuxing[dizhi_index])
+                        .text(najia[i]+ module.exports.getWuXing(najia[i]))
                         .attr('x', x)
                         .attr('y', y + i * interval)
                         .attr('font-size', 16);
