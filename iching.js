@@ -139,10 +139,10 @@ module.exports = {
         }
     },
     getXianTianBaGua : function(number) {
-      return xiantian_bagua[number % 8];
+      return xiantian_bagua[(number + 7) % 8];
     },
     getHouTianBaGua : function(number) {
-      return houtian_bagua[number % 8];
+      return houtian_bagua[(number + 7) % 8];
     },
     getWuXing : function(gua) {
       if (trigram.indexOf(gua) != -1) {
